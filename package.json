@@ -1,0 +1,17 @@
+{
+  "name": "easyhealth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start:backend": "cd EasyHealth_backend && npm run dev",
+    "start:frontend": "cd EasyHealth_frontend && npm run dev",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0"
+  }
+}
