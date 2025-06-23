@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './RegisterForm.module.css';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
@@ -40,14 +41,21 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-20 p-6 border shadow rounded">
-      <h2 className="text-xl font-bold mb-4">Register</h2>
-      {error && <p className="text-red-600 mb-4">{error}</p>}
-      <form onSubmit={handleRegister} className="space-y-4">
+    <div className={styles.container}>
+      {/* ✅ Logo on top */}
+      <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        <img src="/logo.png" alt="EasyHealth Logo" style={{ height: '80px' }} />
+      </div>
+
+      <h2 className={styles.title}>Register</h2>
+
+      {error && <p className={styles.error}>{error}</p>}
+
+      <form onSubmit={handleRegister} className={styles.form}>
         <input
           type="email"
           placeholder="Email"
-          className="border p-2 w-full"
+          className={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -55,7 +63,7 @@ const RegisterForm = () => {
         <input
           type="password"
           placeholder="Password"
-          className="border p-2 w-full"
+          className={styles.input}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -63,25 +71,22 @@ const RegisterForm = () => {
         <input
           type="password"
           placeholder="Confirm Password"
-          className="border p-2 w-full"
+          className={styles.input}
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
-        >
-          Sign Up
-        </button>
+        <button type="submit" className={styles.button}>Sign Up</button>
       </form>
 
-      {/* 👇 Link to Login */}
-      <p className="text-sm text-center mt-4">
+      <p style={{ textAlign: 'center', marginTop: '1rem', fontSize: '14px' }}>
         Already have an account?{' '}
-        <a href="/" className="text-blue-600 underline">
+        <span
+          style={{ color: '#007bff', cursor: 'pointer', textDecoration: 'underline' }}
+          onClick={() => navigate('/')}
+        >
           Log in here
-        </a>
+        </span>
       </p>
     </div>
   );

@@ -1,4 +1,5 @@
 // src/components/LoginForm.jsx
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './LoginForm.module.css';
@@ -47,36 +48,58 @@ export default function LoginForm() {
   };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Login</h2>
-      {error && <div className={styles.error}>{error}</div>}
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.formGroup}>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={styles.input}
-          />
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      backgroundColor: '#f4f4f4'
+    }}>
+      <div className={styles.container} style={{
+        background: '#fff',
+        padding: '2rem',
+        borderRadius: '8px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+        width: '100%',
+        maxWidth: '400px'
+      }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+          <img src="/logo.png" alt="EasyHealth Logo" style={{ height: '80px' }} />
         </div>
-        <div className={styles.formGroup}>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles.input}
-          />
-        </div>
-        <button type="submit" className={styles.button}>Login</button>
-      </form>
 
-      <div className={styles.linkContainer}>
-        <p>
-          Don’t have an account?{' '}
-          <span className={styles.link} onClick={() => navigate('/register')}>Register</span>
-        </p>
+        <h2 className={styles.title}>Login</h2>
+        {error && <div className={styles.error}>{error}</div>}
+
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.formGroup}>
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={styles.input}
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={styles.input}
+            />
+          </div>
+
+          <button type="submit" className={styles.button}>Login</button>
+        </form>
+
+        <div className={styles.linkContainer}>
+          <p>
+            Don’t have an account?{' '}
+            <span className={styles.link} onClick={() => navigate('/register')}>Register</span>
+          </p>
+        </div>
       </div>
     </div>
   );

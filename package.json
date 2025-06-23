@@ -1,17 +1,29 @@
 {
-  "name": "easyhealth",
-  "version": "0.1.0",
-  "private": true,
+  "name": "easyhealth-desktop",
+  "version": "1.0.0",
+  "description": "EasyHealth Desktop App - Electron + React + Express/MongoDB backend",
+  "main": "main.js",
   "scripts": {
-    "start:backend": "cd EasyHealth_backend && npm run dev",
-    "start:frontend": "cd EasyHealth_frontend && npm run dev",
-    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --win"
   },
   "devDependencies": {
-    "concurrently": "^8.0.0",
-    "eslint": "^8.0.0",
-    "prettier": "^2.0.0"
+    "electron": "^29.0.0",
+    "electron-builder": "^24.13.2"
+  },
+  "build": {
+    "appId": "com.easyhealth.desktop",
+    "productName": "EasyHealth",
+    "files": [
+      "main.js",
+      "EasyHealth_frontend/dist/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis"
+    }
   }
 }
